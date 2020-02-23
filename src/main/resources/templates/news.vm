@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>weibo</title>
+    <style>
+        .message-container {
+            margin: 0 auto;
+            max-width: 600px;
+            border: 1px solid #f8f8f9;
+        }
+
+        .message-header div {
+            background-color: #f8f8f9;
+            position: relative;
+        }
+
+        .message-header a {
+            position: absolute;
+            right: 20px;
+            font-size: 14px;
+            color: #787878;
+            text-decoration: none;
+            top: 22px;
+        }
+
+        .message-header img {
+            padding: 20px;
+            width: 150px;
+        }
+
+        h2 {
+            font-size: 22px;
+            color: #7588a4;
+            font-weight: 400;
+            margin: 0;
+            padding: 15px 20px;
+            border-top: 1px solid #f8f8f9;
+        }
+
+        .message {
+            border-top: 1px solid #f8f8f9;
+        }
+
+        .message .message-title {
+            font-size: 16px;
+            padding-bottom: 10px;
+            position: relative;
+        }
+
+        .message .message-title a {
+            color: #000;
+            text-decoration: none;
+            font-size: 14px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 300px;
+            display: inline-block;
+        }
+
+        .message .message-title a:hover {
+            text-decoration: underline;
+        }
+
+        .message-title span {
+            display: inline-block;
+            font-size: 13px;
+            vertical-align: bottom;
+            margin-left: 15px;
+            color: #999;
+            position: absolute;
+            right: 10px;
+        }
+
+        .category {
+            padding: 7.5px 20px;
+            border-bottom: 1px solid #f8f8f9;
+        }
+
+        .category h3 {
+            color: #7588a4;
+            margin: 0 0 10px 0;
+        }
+
+        .footer {
+            background-color: #f8f8f8;
+            padding: 20px;
+            font-size: 14px;
+            color: #787878;
+        }
+    </style>
+</head>
+
+<body>
+<div class="message-container">
+    <div class="message-header">
+        <div>
+            <h2>为您推荐的热点
+                <span> <a href="http://read.lavector.com" target="_blank">查看更多</a> </span>
+            </h2>
+        </div>
+    </div>
+    <div class="message">
+        #foreach( $key in $data.keySet() )
+            <div class="category">
+                <h3>$key</h3>
+                #foreach( $news in $data.get($key) )
+                    <div class="message-title">
+                        <a href="$news.url" target="_blank" title="$news.title">$news.title</a>
+                        <span>$date.format("MM-dd hh:mm", $news.timePublish)</span>
+                    </div>
+                #end
+            </div>
+        #end
+    </div>
+    <div class="footer">
+        了解更多，请访问
+        <a href="http://www.lavector.com" target="_blank">www.lavector.com</a>
+    </div>
+</div>
+</body>
+
+</html>

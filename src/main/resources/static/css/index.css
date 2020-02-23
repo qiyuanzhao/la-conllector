@@ -1,0 +1,197 @@
+body {
+    font-family: PingFang SC, Tahoma, Helvetica, Arial, Hiragino Sans GB, Microsoft YaHei, Heiti SC, WenQuanYi Micro Hei, sans-serif;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity .5s;
+}
+
+.fade-enter,
+.fade-leave-to
+/* .fade-leave-active in below version 2.1.8 */
+
+{
+    opacity: 0;
+}
+
+.header-container {
+    border-bottom: 1px solid #ddd;
+}
+.affix {
+    /*z-index: -1;*/
+}
+
+.navbar-brand {
+    margin-right: 25px;
+}
+
+.nav.navbar-nav a {
+    cursor: pointer;
+}
+
+.nav.navbar-nav li.active {
+    font-weight: 600;
+}
+
+.nav.navbar-nav li.active a {
+    background-color: #eee;
+    color: #153056;
+    font-weight: 600;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #142b5c;
+}
+
+#top {
+    max-width: 625px;
+    margin: 0 auto;
+}
+
+.navbar-brand img {
+    width: 150px;
+}
+
+.message-container {
+    margin: 0 auto;
+    max-width: 625px;
+    padding: 15px;
+}
+
+
+/* First level of nav */
+
+.bs-docs-sidenav {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 620px;
+}
+
+
+/* All levels of nav */
+
+.bs-docs-sidebar .nav>li>a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #767676;
+    cursor: pointer;
+}
+
+.bs-docs-sidebar .nav>li>a:hover,
+.bs-docs-sidebar .nav>li>a:focus {
+    padding-left: 19px;
+    color: #153056;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid #153056;
+}
+
+.bs-docs-sidebar .nav>.active>a,
+.bs-docs-sidebar .nav>.active:hover>a,
+.bs-docs-sidebar .nav>.active:focus>a {
+    padding-left: 18px;
+    font-weight: bold;
+    color: #153056;
+    background-color: transparent;
+    border-left: 2px solid #153056;
+}
+
+
+/* Nav: second level (shown on .active) */
+
+.bs-docs-sidebar .nav .nav>li>a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.bs-docs-sidebar .nav .nav>li>a:hover,
+.bs-docs-sidebar .nav .nav>li>a:focus {
+    padding-left: 29px;
+}
+
+.bs-docs-sidebar .nav .nav>.active>a,
+.bs-docs-sidebar .nav .nav>.active:hover>a,
+.bs-docs-sidebar .nav .nav>.active:focus>a {
+    padding-left: 28px;
+    font-weight: 500;
+}
+
+.message-list {
+    position: relative;
+}
+
+.message {
+    border-bottom: 1px solid #ddd;
+    padding: 20px 15px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.message.active {
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 18px -4px rgba(0, 0, 0, .1);
+    height: auto;
+}
+
+.message .message-title {
+    font-size: 17px;
+}
+
+.message .message-title .message-time {
+    display: inline-block;
+    font-size: 13px;
+    vertical-align: bottom;
+    margin-left: 15px;
+    color: #999;
+}
+
+.message .message-body {
+    height: 135px;
+    padding: 15px 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    overflow: hidden;
+    transition: ease all .5s;
+}
+
+.message.active .message-body {
+    height: auto;
+    display: block;
+}
+
+.message .message-content {
+    color: #737373;
+    text-align: justify;
+}
+
+.message .message-content p {
+    text-indent: 28px;
+    margin-bottom: 5px;
+}
+
+.title-container .message-title {
+    position: relative;
+    padding-left: 15px;
+}
+
+.title-container .message-title a {
+    font-size: 14px;
+}
+
+.title-container .message-title::before {
+    content: " ";
+    position: absolute;
+    left: 0px;
+    margin-top: 7px;
+    width: 10px;
+    height: 10px;
+    border: 1.5px solid #acb9c6;
+    border-radius: 50%;
+}

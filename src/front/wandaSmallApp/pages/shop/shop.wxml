@@ -1,0 +1,52 @@
+<view>
+  <swiper indicator-dots="true" autoplay="true" interval="3000" duration="2000">
+    <block wx:for="{{shop.picList}}" wx:key="item">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class="shop">
+  <view class="weui-flex shop-dec">
+    <view class="shop-logo weui-flex">
+      <image class="weui-flex__item" src="{{shop.brand.logo}}" mode="widthFix"/>
+    </view>
+    <view class="weui-flex weui-flex__item shop-info">
+      <view class="weui-flex__item">
+        <text>{{shop.name}}</text>
+      </view>
+      <view class="weui-flex__item">
+        <text>评分：{{shop.rate}}</text>
+      </view>
+      <view class="weui-flex__item shop-category">
+        <text>{{shop.brand.category.name}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="shop-addres">
+    <span class="iconfont icon-map" bindtap="call"></span>
+    <text> 地址：{{shop.address}}</text> 
+    <span class="iconfont icon-phone" bindtap="call"></span>
+  </view>
+</view>
+<view class="shop-profile">
+  <view class="title">
+      商家信息
+  </view>
+  <view class="content">
+    <text class="lable">商家简介： </text>
+    {{shop.brand.introduction}}
+  </view>
+</view>
+<view class="shop-profile">
+  <view class="title">
+    品牌故事
+  </view>
+  <view class="content" style="padding: 60rpx;">
+    <view class="item-image-container" wx:for="{{brandArticleList}}" wx:key="item.id"  data-id="{{item.id}}" bindtap="tapArticle">
+      <text class="item-title">{{item.title}}</text>
+      <image class="item-image" src="{{item.image}}" mode="aspectFill"/>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>菱歌品牌云™</title>
+    <link rel="shortcut icon" href="images/logo-ico.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+</head>
+
+<body>
+<div class="" id="webApp">
+    <div class="header-container">
+        <header class="navbar navbar-static-top bs-docs-nav" id="top">
+            <div class="navbar-header">
+                <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar"
+                        aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="../" class="navbar-brand">
+                    <img src="./images/lavector-logo.png" alt="" srcset="">
+                </a>
+            </div>
+            <!-- <nav id="bs-navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li v-bind:class="{ active: currentTab == 'movie' }" v-on:click="changeTab('movie')">
+                        <a>电影</a>
+                    </li>
+                    <li v-bind:class="{ active: currentTab == 'sport' }" v-on:click="changeTab('sport')">
+                        <a>体育</a>
+                    </li>
+                    <li v-bind:class="{ active: currentTab == 'egame'}" v-on:click="changeTab('egame')">
+                        <a>电子竞技</a>
+                    </li>
+                </ul>
+            </nav> -->
+            <div class="collapse navbar-collapse" id="bs-navbar">
+                <ul class="nav navbar-nav">
+                    <!-- <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">热点&nbsp&nbsp
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li v-bind:class="{ active: currentTab == 'movie' }" v-on:click="changeTab('movie')">
+                                <a>电影</a>
+                            </li>
+                            <li v-bind:class="{ active: currentTab == 'sport' }" v-on:click="changeTab('sport')">
+                                <a>体育</a>
+                            </li>
+                            <li v-bind:class="{ active: currentTab == 'egame'}" v-on:click="changeTab('egame')">
+                                <a>电子竞技</a>
+                            </li>
+                        </ul>
+                    </li> -->
+                    <li v-bind:class="{ active: currentTab == 'HOT'}">
+                        <a v-on:click="changeTab('HOT')">热点</a>
+                    </li>
+                    <li v-bind:class="{ active: currentTab == 'DISCOVER'}">
+                        <a v-on:click="changeTab('DISCOVER')">发现</a>
+                    </li>
+                </ul>
+            </div>
+
+        </header>
+    </div>
+    <div class="message-container">
+        <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
+            <ul class="nav bs-docs-sidenav">
+                <li v-bind:class="{ active: currentCategory == item.id}" v-for="item in treeData">
+                    <a v-on:click="getNewsByCategory(item.id)">{{item.name}}</a>
+                    <ul class="nav" v-if="item.children">
+                        <li v-bind:class="{ active: currentCategory == children.id}" v-for="children in item.children">
+                            <a v-on:click="getNewsByCategory(children.id)">{{children.name}}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="message-list">
+            <div class="message" v-bind:class="{ active: message[0].show }" v-for="message in messages" v-on:click="selectedMessage(message[0]);">
+                <div class="message-title">
+                    {{message[0].title}}
+                    <span class="message-time">{{getDisplayTime(message[0].timeCreated)}}</span>
+                </div>
+                <div class="message-body">
+                    <div class="message-content" v-html="message[0].content" v-show="!message[0].show">
+
+                    </div>
+                    <div class="message-content" v-html="message[0].newContent" v-show="message[0].show">
+
+                    </div>
+                </div>
+                <div class="title-container" v-if="message.length > 0 && message[0].show">
+                    <div class="message-title" v-for="(item, index) in message" v-show="index > 0">
+                        <a v-bind:href="item.url" target="_blank">{{item.title}}</a>
+                        <span class="message-time">{{item.source}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="./js/jquery-3.1.1.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="./js/moment.min.js"></script>
+<script src="./js/nav.js"></script>
+<script src="./js/vue.min.js"></script>
+<script src="./js/vue-resource.js"></script>
+<script>
+    new Vue({
+        el: '#webApp',
+        data: {
+            messages: [],
+            treeData: [],
+            currentTab: 'HOT',
+            currentCategory: ''
+        },
+        created: function () {
+            this.$http.get('/api/category/all').then(response => {
+                let root = {
+                    name: "频道",
+                    id: 0
+                };
+            function tree(node) {
+                response.data.forEach(d => {
+                    if (d.pid === node.id) {
+                    if (!Array.isArray(node.children)) {
+                        node.children = [];
+                    }
+                    node.children.push(d);
+                    tree(d);
+                }
+            });
+            }
+            tree(root);
+            console.log('xxxx');
+            this.treeData = root.children;
+            this.currentCategory = root.children[1].children[0].id;
+            let url = "/api/news/" + this.currentCategory + "/HOT";
+            this.$http.get(url).then(response => {
+                this.messages = response.body;
+        });
+        })
+        },
+        computed: {
+
+        },
+        methods: {
+            replace: function (content) {
+
+            },
+            changeTab: function (tab) {
+                this.currentTab = tab;
+                let url = "/api/news/" + this.currentCategory + "/" + this.currentTab;
+                this.$http.get(url).then(response => {
+                    this.messages = response.body;
+            }, response => {
+
+                });
+            },
+            getNewsByCategory: function (id) {
+                this.currentCategory = id;
+                let url = "/api/news/" + this.currentCategory + "/" + this.currentTab;
+                this.$http.get(url).then(response => {
+                    this.messages = response.body;
+            });
+            },
+            selectedMessage: function (message) {
+                if (message.show) {
+                    Vue.set(message, 'show', false);
+                } else {
+                    var lines = message.content.split('\n');
+                    var newContent = '';
+                    for (var i = 0, l = lines.length; i < l; i++) {
+                        newContent += '<p>' + lines[i] + '</p>';
+                    }
+                    Vue.set(message, 'newContent', newContent);
+                    Vue.set(message, 'show', true);
+                }
+            },
+            getDisplayTime: function (messageTime) {
+                var messageTimeMoment = moment(messageTime);
+                var daysDiff = moment().startOf('day').diff(moment(messageTime).startOf('day'), 'days');
+                var formatter;
+                if (daysDiff == 0) {
+                    formatter = '今天 HH:mm';
+                } else if (daysDiff == 1) {
+                    formatter = '昨天 HH:mm';
+                } else {
+                    formatter = 'YYYY年MM月DD日 HH:mm';
+                }
+                return moment(messageTimeMoment).format(formatter);
+            }
+        }
+    })
+</script>
+</body>
+
+</html>

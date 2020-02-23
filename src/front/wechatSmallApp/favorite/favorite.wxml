@@ -1,0 +1,15 @@
+<import src="../common/nav.wxml"/>
+<view class="navbar">
+ <view class="navbar-item" wx:for="{{navbar}}" wx:for-index="idx" wx:key="item" data-idx="{{idx}}" bindtap="switchNav">
+    <text class="navbar-text {{currentNavbar==idx ? 'active' : ''}}">{{item}}</text>
+  </view>
+  </view>
+<view class="weui-flex favorite-list">
+      <block wx:for="{{ favoriteList }}" wx:key="">
+        <view data-type="{{ item._id }}" data-id="{{item.shopId}}" class="favorite-logo" catchtap="tapShop">
+        	<image src="{{item.logo}}" />
+        </view>
+      </block>
+</view>
+<view>
+</view>

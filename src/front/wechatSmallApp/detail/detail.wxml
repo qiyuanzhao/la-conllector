@@ -1,0 +1,13 @@
+<import src="../../wxParse/wxParse.wxml"/>
+<view>
+    {{article.title}}
+</view>
+<view>
+{{article.author}}
+{{article.date}}
+{{article.readNum}}
+{{article.likeNum}}
+</view>
+<view>
+<template is="wxParse" data="{{wxParseData:parseContent.nodes}}"/>
+</view>

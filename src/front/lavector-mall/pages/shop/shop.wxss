@@ -1,0 +1,68 @@
+page{
+  background-color: #f5f5f5;
+}
+.shop{
+  background-color: #fff;
+  margin-bottom: 10rpx;
+}
+.shop-dec{
+  padding: 20rpx;
+  border-bottom: 1px solid #ddd;
+}
+.shop-logo{
+  width: 200rpx;
+  margin-right: 50rpx;
+}
+.shop-info{
+  flex-direction: column;
+  font-size: 32rpx;
+}
+.shop-category text{
+  font-size: 28rpx;
+  color: #979797;
+}
+.shop-addres{
+  padding: 20rpx;
+  color: #666;
+  font-size: 28rpx;
+}
+.icon-phone{
+  float: right;
+}
+.shop-profile{
+  background-color: #fff;
+}
+.shop-profile .title{
+  padding: 15rpx 0;
+  margin: 20rpx 20rpx 0 20rpx;
+  border-bottom: 1px solid #ddd;
+  font-size: 32rpx;
+}
+.shop-profile .content{
+  font-size: 28rpx;
+  padding: 20rpx;
+  color: #666;
+}
+.shop-profile .lable{
+  color: #000;
+  font-weight: 600;
+}
+.item-image-container{
+  position: relative;
+  margin-bottom: 30rpx;
+}
+.item-image-container:nth-last-child(1){
+  margin-bottom: 0px;
+}
+.item-image {
+  height: 250rpx;
+}
+.item-image-container text {
+  position: absolute;
+  bottom: 5px;
+  width: calc(100% - 10px);
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5); /*实现FF背景透明，文字不透明*/
+  font-size:28rpx;
+  padding:10rpx 0rpx 10rpx 20rpx;
+}

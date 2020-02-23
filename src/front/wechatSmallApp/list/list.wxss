@@ -1,0 +1,65 @@
+.top-bar {
+    height: 56rpx;
+}
+.top-bar .position-select {
+    font-size: 24rpx;
+    width: 200rpx;
+    line-height: 56rpx;
+}
+
+
+.item-list {
+  padding: 20rpx;
+}
+.item {
+  flex-direction: row;
+  margin-bottom: 20rpx;
+}
+
+.item .item-content {
+  height: 100px;
+}
+
+.item .address {
+  color: #ccc;
+  font-size: 24rpx;
+}
+
+.item .item-title {
+  position: absolute;
+  width: 100%;
+}
+
+.item .item-image {
+  height: 200rpx;
+  width: 635rpx;
+}
+
+.item .item-image-container {
+  /* background-image: url("https://wx4.sinaimg.cn/mw690/61e36371ly1fmm3m924skj20sg0iy78y.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat; */
+}
+
+.item .item-image-container text {
+  align-self: flex-end;
+  color: white;
+  background: #fff;
+  background: rgba(255, 255, 255, 0.5) none repeat scroll 0 0 !important; /*实现FF背景透明，文字不透明*/
+}
+
+.item .item-operation {
+  flex-direction: column;
+}
+
+.item .item-operation .item-operation-button {
+  flex-grow: 1;
+  font-size: 24rpx;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+.item .item-operation .item-operation-button image {
+  width: 40rpx;
+  height: 40rpx;
+}

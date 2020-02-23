@@ -1,0 +1,59 @@
+<view class="top-bar weui-flex">
+  <view class="position-select">
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+      万达广场
+    </picker>
+  </view>
+  <view class="weui-flex__item">
+    <view class="weui-search-bar__box">
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+      <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+      <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+        <icon type="clear" size="14"></icon>
+      </view>
+    </view>
+  </view>
+  <view>
+  </view>
+</view>
+<view class="navbar">
+  <view class="navbar-item" wx:for="{{navbar}}" wx:for-index="id" wx:key="item" data-id="{{item.id}}" bindtap="switchNav">
+    <text class="navbar-text {{currentNavbar==item.id ? 'active' : ''}}">{{item.name}}</text>
+  </view>
+</view>
+<view>
+
+  <!-- <button bindtap="changeIndicatorDots"> indicator-dots </button>
+  <button bindtap="changeAutoplay"> autoplay </button>
+  <slider bindchange="intervalChange" show-value min="500" max="10000" /> interval
+  <slider bindchange="durationChange" show-value min="1000" max="10000" /> duration -->
+</view>
+<view class="item-list">
+  <view wx:for="{{articleList}}" wx:key="article.id" class="item">
+    <view class="item-content weui-flex">
+      <view class="weui-flex__item weui-flex item-image-container" data-id="{{item.id}}" bindtap="tapArticle">
+        <!-- <cover-view class="time">科比球衣退役</cover-view>  -->
+        <!-- <text class="weui-flex__item">科比球衣退役</text> -->
+        <text class="item-title">{{item.title}}</text>
+        <image class="item-image" src="{{item.image}}" />
+      </view>
+      <view class="weui-flex__item weui-flex item-operation">
+        <view class="item-operation-button weui-flex" data-shop-id="{{item.shopId}}" bindtap="tapShop">
+          <image class="weui-flex__item" src="/asserts/image/shop.png" />
+          <view class="weui-flex__item">
+            <text>店铺</text>
+          </view>
+        </view>
+        <view class="item-operation-button weui-flex" data-shop-id="{{item.brandId}}" bindtap="tapFavorite">
+          <image class="weui-flex__item" src="/asserts/image/favorite.png" />
+          <view class="weui-flex__item">
+            <text>收藏</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="address">
+      {{item.address}}
+    </view>
+  </view>
+</view>

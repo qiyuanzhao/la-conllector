@@ -1,0 +1,45 @@
+<view>
+  <swiper indicator-dots="true" autoplay="true" interval="3000" duration="2000">
+    <block wx:for="{{shop.pics}}" wx:key="item">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class="shop">
+  <view class="weui-flex">
+
+    <view class="shop-logo" style="width:200rpx">
+      <image src="{{shop.logo}}" width="350" />
+    </view>
+    <view class="weui-flex weui-flex__item shop-info">
+      <view class="weui-flex__item">
+        <text>{{shop.name}}</text>
+      </view>
+      <view class="weui-flex__item">
+        <text>{{shop.rate}}</text>
+      </view>
+      <view class="weui-flex__item">
+        <text>{{shop.category}}</text>
+      </view>
+    </view>
+  </view>
+    <view>
+      
+      <span class="iconf icon-map" bindtap="call"></span>
+      <text> 地址：{{shop.address}}</text> 
+      <span class="iconf icon-phone" bindtap="call"></span>
+    </view>
+</view>
+<view>
+<view>
+    商家信息
+</view>
+<view>
+   <text>商家简介： </text>
+  {{shop.introduction}}
+</view>
+</view>
+<view>
+</view>

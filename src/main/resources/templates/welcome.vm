@@ -1,0 +1,25 @@
+<div>
+
+    <br/><br/>
+
+    <p>欢迎您来到菱歌品牌管理平台</p>
+    <br/>
+
+    <p>您的账户已被激活. 登陆详情如下:</p>
+
+    <div>
+        <p>用户名: ${loginEmail}</p>
+    </div>
+    <div>
+        <p>密码: ${loginPassword}</p>
+    </div>
+
+    <div>
+        <p>说明：${description}</p>
+    </div>
+    <br/>
+
+    <p>
+        点击<a href="${loginURL}">这里</a>登陆
+    </p>
+</div>

@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: com.lavector.collector.crawler.project.weibo.weiboStar.WeiboStar
+ Crawler
+

@@ -1,0 +1,7 @@
+.shop {
+
+}
+
+.shop-info{
+  flex-direction: column;
+}

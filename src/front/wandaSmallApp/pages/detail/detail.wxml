@@ -1,0 +1,39 @@
+<import src="../../wxParse/wxParse.wxml" />
+<view class="article">
+  <view class="article-title">
+    {{article.title}}
+  </view>
+  <view class="article-info">
+    {{article.author}} {{article.date}}
+    <view class="article-count">
+      <span class="iconfont icon-browse" bindtap="call"></span>{{article.readNum}}    
+      <span class="iconfont icon-good" bindtap="call" style="padding-left: 10rpx;"></span>{{article.likeNum}}
+    </view>
+  </view>
+  <view class="article-content">
+    <template is="wxParse" data="{{wxParseData:parseContent.nodes}}" />
+  </view>
+</view>
+<view>
+<view class="related-shop-title">
+    <text>相关店铺</text>
+</view>
+  <view wx:for="{{relatedShopList}}" wx:key="item.id" class="related-shop-list" bindtap="tapRelateShop" data-shop-id="{{item.id}}">
+    <view class="weui-flex">
+      <view class="shop-logo" style="width:200rpx">
+        <image src="{{item.brand.logo}}" width="350" />
+      </view>
+      <view class="weui-flex weui-flex__item shop-info">
+        <view class="weui-flex__item name">
+          <text>{{item.name}}</text>
+        </view>
+        <view class="weui-flex__item address">
+          <text>{{item.address}}</text>
+        </view>
+      </view>
+      <view class="weui-flex favorite">
+        <image class="weui-flex__item" src="/asserts/image/home.png" />
+      </view>
+    </view>
+  </view>
+</view>

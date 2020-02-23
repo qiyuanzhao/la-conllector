@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/list/list",
+    "pages/favorite/favorite",
+    "pages/shop/shop",
+    "pages/detail/detail",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "万达广场",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#bfbfbf",
+    "selectedColor": "#00BADA",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/list/list",
+        "iconPath": "asserts/image/home.png",
+        "selectedIconPath": "asserts/image/homeSelect.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/favorite/favorite",
+        "iconPath": "asserts/image/favorite.png",
+        "selectedIconPath": "asserts/image/favoriteSelect.png",
+        "text": "收藏"
+      }
+    ]
+  },
+  "debug": true
+}

@@ -1,0 +1,19 @@
+
+<!-- <view class="navbar">
+  <view class="navbar-item" wx:for="{{navbar}}" wx:for-index="idx" wx:key="item" data-idx="{{idx}}" bindtap="switchNav">
+    <text class="navbar-text {{currentNavbar==idx ? 'active' : ''}}">{{item}}</text>
+  </view>
+</view> -->
+<view wx:for="{{ favoriteList }}" wx:key="id">
+  <view class="group-title">
+    <text>{{item.floor}}(共{{item.stores.length}}个品牌)</text>
+  </view>  
+  <view class="favorite-list weui-flex">
+    <block >
+      <view wx:for="{{ item.stores }}" data-type="{{ item._id }}" class="favorite-logo" data-id="{{item.id}}"        catchtap="tapShop">
+        <image src="{{item.brand.logo}}" mode="aspectFit" />
+      </view>
+    </block>
+  </view>
+</view>
+
